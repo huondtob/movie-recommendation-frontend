@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Movie from './MovieGrid/Movie';
 
 export default class MovieGrid extends React.Component {
