@@ -1,0 +1,28 @@
+#body {
+    background-color: lightblue;
+}
+
+#header {
+    background-color: lightgreen;
+}
+
+#footer {
+    background-color: lightyellow;
+}
+
+#inputField {
+    background-color: DarkGray;
+}
+
+#movieGrid {
+    background-color: DarkOrange;
+}
+
+#movie {
+    background-color: DarkTurquoise;
+}
+
+h1 {
+    color: black;
+    margin-left: 20px;
+}
