@@ -1,28 +1,28 @@
 #body {
-    background-color: lightblue;
+  background-color: Snow;
 }
 
 #header {
-    background-color: lightgreen;
+  background-color: ForestGreen;
 }
 
 #footer {
-    background-color: lightyellow;
+  background-color: PeachPuff;
 }
 
 #inputField {
-    background-color: DarkGray;
+  background-color: DodgerBlue;
 }
 
 #movieGrid {
-    background-color: DarkOrange;
+  background-color: OrangeRed;
 }
 
 #movie {
-    background-color: DarkTurquoise;
+  background-color: DarkTurquoise;
 }
 
 h1 {
-    color: black;
-    margin-left: 20px;
+  color: black;
+  margin-left: 20px;
 }
