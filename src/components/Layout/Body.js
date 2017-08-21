@@ -15,8 +15,6 @@ export default class Body extends React.Component {
   handleSearchReccommendation(event) {
     const that = this;
     const url = 'http://localhost:3001';
-    const target = event.target;
-    const value = target.value;
 
     fetch(url)
       .then(function(response) {
