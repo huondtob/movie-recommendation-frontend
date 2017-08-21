@@ -1,5 +1,6 @@
 import React from 'react';
 
+//Post the seen movies to the backend
 export default class Movie extends React.Component {
   constructor(){
     super();
@@ -25,7 +26,7 @@ export default class Movie extends React.Component {
   render() {
     return (
       <div id="movie">
-        <h3> {this.props.movieTitle} </h3>
+        <h3> {this.props.movieTitle}</h3>
         <button onClick={this.handleMovieChecked}>Mark seen</button>
       </div>
     );

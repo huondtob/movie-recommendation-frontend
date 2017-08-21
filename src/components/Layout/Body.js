@@ -2,6 +2,7 @@ import React from 'react';
 import InputField from './Body/InputField';
 import MovieGrid from './Body/MovieGrid';
 
+// Processes the search term from the input field and gets the movies accordingly
 export default class Body extends React.Component {
   constructor(){
     super();
@@ -9,10 +10,10 @@ export default class Body extends React.Component {
       movies: []
     };
 
-   this.handleSearchReccommendation = this.handleSearchReccommendation.bind(this);
+    this.handleSearchRecommendation = this.handleSearchRecommendation.bind(this);
   }
 
-  handleSearchReccommendation(event) {
+  handleSearchRecommendation(event) {
     const that = this;
     const url = 'http://localhost:3001';
 
@@ -28,8 +29,8 @@ export default class Body extends React.Component {
   render() {
     return (
       <div id="body">
-        <h1> Body </h1>
-        <InputField onChange={this.handleSearchReccommendation} />
+        <h1>Body</h1>
+        <InputField onChange={this.handleSearchRecommendation}/>
         <MovieGrid movies={this.state.movies}/>
       </div>
     );
