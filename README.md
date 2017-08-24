@@ -4,10 +4,10 @@
 To get the project running first it is required to have the node package manager
 
 ### Install Dependencies
-npm install
+`npm install`
 
 ### Start
-npm start
+`npm start`
 
 The Frontend is now avaliable on http://localhost:3000/
 
