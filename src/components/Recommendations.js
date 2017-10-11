@@ -1,12 +1,19 @@
 import React from 'react';
 
-export default function Recommendations(props) {
-  const { moviesError } = props;
+export default class Recommendations extends React.Component {
+  componentWillMount() {
+    this.props.getRecommendedMovies();
+  }
 
-  return (
-    <div>
-      <h1>Recommendations</h1>
-      { moviesError && <strong>{ moviesError.message }</strong> }
-    </div>
-  );
+  render(){
+    const movieContainers = this.props.movies.map(movie => (<div key={movie}>{movie}</div>));
+
+    return (
+      <div>
+        <h1>Recommendations</h1>
+        { movieContainers }
+        { this.props.recommendationsError && <strong>{'There was an error fetching recommendations'}</strong> }
+      </div>
+    );
+  }
 }

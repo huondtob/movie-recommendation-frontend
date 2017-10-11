@@ -26,7 +26,7 @@ let RegisterForm = (props) => {
         <Field name="passwordConfirmation" component="input" type="password" required/>
       </label>
       <br />
-      { userError && <strong>{ userError.message }</strong>}
+      { userError && <strong>{'There was an error with your submission'}</strong> }
       <input type="submit" value="Submit" />
     </form>
   );

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { requestMovies, requestMoviesSuccess, requestMoviesFailure } from '../actions/movies';
-import Movies from '../components/Movies';
+import SearchMovies from '../components/SearchMovies';
 
 const BASE_URL = 'http://localhost:3001/api';
 
@@ -42,4 +42,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Movies);
+)(SearchMovies);
