@@ -13,20 +13,3 @@ main{
 footer {
   background-color: PeachPuff;
 }
-
-#inputField {
-  background-color: DodgerBlue;
-}
-
-#movieGrid {
-  background-color: OrangeRed;
-}
-
-#movie {
-  background-color: DarkTurquoise;
-}
-
-h1 {
-  color: black;
-  margin-left: 20px;
-}
