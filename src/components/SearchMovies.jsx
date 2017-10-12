@@ -11,7 +11,8 @@ export default function SearchMovies(props) {
       <input type="text" onChange={handleChange} />
 
       { movieContainers }
-      { moviesError && <strong>{'There was an error processing while fetching movies'}</strong> }
+      { moviesError &&
+        <strong>There was an error processing while fetching movies</strong> }
     </div>
   );
 }

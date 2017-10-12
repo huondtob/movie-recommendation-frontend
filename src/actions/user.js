@@ -24,116 +24,116 @@ export const ADD_WATCHED_MOVIE_FAILURE = 'ADD_WATCHED_MOVIE_FAILURE';
 
 export function logoutUser() {
   return {
-    type: LOGOUT_USER
-  }
+    type: LOGOUT_USER,
+  };
 }
 
 export function logoutUserSuccess() {
   return {
-    type: LOGOUT_USER_SUCCESS
-  }
+    type: LOGOUT_USER_SUCCESS,
+  };
 }
 
 export function logoutUserFailure(error) {
   return {
     type: LOGOUT_USER_FAILURE,
-    error
-  }
+    error,
+  };
 }
 
 export function loginUser() {
   return {
-    type: LOGIN_USER
-  }
+    type: LOGIN_USER,
+  };
 }
 
 export function loginUserSuccess() {
   return {
-    type: LOGIN_USER_SUCCESS
-  }
+    type: LOGIN_USER_SUCCESS,
+  };
 }
 
 export function loginUserFailure(error) {
   return {
     type: LOGIN_USER_FAILURE,
-    error
-  }
+    error,
+  };
 }
 
 export function registerUser() {
   return {
-    type: REGISTER_USER
-  }
+    type: REGISTER_USER,
+  };
 }
 
 export function registerUserSuccess() {
   return {
-    type: REGISTER_USER_SUCCESS
-  }
+    type: REGISTER_USER_SUCCESS,
+  };
 }
 
 export function registerUserFailure(error) {
   return {
     type: REGISTER_USER_FAILURE,
-    error
-  }
+    error,
+  };
 }
 
 export function deleteUser() {
   return {
-    type: DELETE_USER
-  }
+    type: DELETE_USER,
+  };
 }
 
 export function deleteUserSuccess() {
   return {
-    type: DELETE_USER_SUCCESS
-  }
+    type: DELETE_USER_SUCCESS,
+  };
 }
 
 export function deleteUserFailure(error) {
   return {
     type: DELETE_USER_FAILURE,
-    error
-  }
+    error,
+  };
 }
 
 export function requestUser() {
   return {
-    type: REQUEST_USER
-  }
+    type: REQUEST_USER,
+  };
 }
 
 export function requestUserSuccess(user) {
   return {
     type: REQUEST_USER_SUCCESS,
-    user
-  }
+    user,
+  };
 }
 
 export function requestUserFailure(error) {
   return {
     type: REQUEST_USER_FAILURE,
-    error
-  }
+    error,
+  };
 }
 
 export function addWatchedMovie() {
   return {
-    type: ADD_WATCHED_MOVIE
-  }
+    type: ADD_WATCHED_MOVIE,
+  };
 }
 
 export function addWatchedMovieSuccess(movie) {
   return {
     type: ADD_WATCHED_MOVIE_SUCCESS,
-    movie
-  }
+    movie,
+  };
 }
 
 export function addWatchedMovieFailure(error) {
   return {
     type: ADD_WATCHED_MOVIE_FAILURE,
-    error
-  }
+    error,
+  };
 }

@@ -7,8 +7,8 @@ export default function App() {
   return (
     <div>
       <HeaderContainer />
-      <Main/>
-      <Footer/>
+      <Main />
+      <Footer />
     </div>
   );
 }

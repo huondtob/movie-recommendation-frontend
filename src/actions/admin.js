@@ -5,19 +5,19 @@ export const REQUEST_ALL_USERS_FAILURE = 'REQUEST_ALL_USERS_FAILURE';
 export function requestAllUsers() {
   return {
     type: REQUEST_ALL_USERS,
-  }
+  };
 }
 
 export function requestAllUsersSuccess(users) {
   return {
     type: REQUEST_ALL_USERS_SUCCESS,
-    users
-  }
+    users,
+  };
 }
 
 export function requestAllUsersFailure(error) {
   return {
     type: REQUEST_ALL_USERS_FAILURE,
-    error
-  }
+    error,
+  };
 }

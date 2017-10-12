@@ -1,47 +1,46 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
-import { registerUser, registerUserSuccess, registerUserFailure } from '../actions/user';
-import { SubmissionError } from 'redux-form';
+import { Field, reduxForm, SubmissionError } from 'redux-form';
 import { push } from 'react-router-redux';
+import { registerUser, registerUserSuccess, registerUserFailure } from '../actions/user';
 
 const BASE_URL = 'http://localhost:3001/api';
 
-const handleRegisterUser = (values, dispatch, props) => {
+const handleRegisterUser = (values, dispatch) => {
   dispatch(registerUser());
 
   const headers = new Headers({
-    "Content-Type": "application/json"
+    'Content-Type': 'application/json',
   });
 
   return fetch(`${BASE_URL}/auth/register`, {
-      method: 'post',
-      headers,
-      body: JSON.stringify(values)
-    })
-    .then(response => {
+    method: 'post',
+    headers,
+    body: JSON.stringify(values),
+  })
+    .then((response) => {
       if (response.ok) {
-        return;
-      } else {
-        return response.json()
-          .then((err) => {
-            throw new SubmissionError({
-              _error: 'Registration failed'
-             })
-          });
+        return undefined;
       }
+
+      return response.json()
+        .then(() => {
+          throw new SubmissionError({
+            _error: 'Registration failed',
+          });
+        });
     });
 };
 
-const handleRegisterUserSuccess = (result, dispatch, props) => {
+const handleRegisterUserSuccess = (result, dispatch) => {
   dispatch(registerUserSuccess());
   dispatch(push('/login'));
 };
 
-const handleRegisterUserFailure = (errors, dispatch, submitError, props) => {
+const handleRegisterUserFailure = (errors, dispatch, submitError) => {
   dispatch(registerUserFailure(submitError));
 };
 
-let RegisterForm = (props) => {
+const RegisterForm = (props) => {
   const { handleSubmit, error } = props;
 
   return (
@@ -70,13 +69,13 @@ let RegisterForm = (props) => {
       <input type="submit" value="Submit" />
     </form>
   );
-}
+};
 
-RegisterForm = reduxForm({
+const RegisterFormRedux = reduxForm({
   form: 'register',
   onSubmit: handleRegisterUser,
   onSubmitSuccess: handleRegisterUserSuccess,
-  onSubmitFail: handleRegisterUserFailure
-})(RegisterForm)
+  onSubmitFail: handleRegisterUserFailure,
+})(RegisterForm);
 
-export default RegisterForm;
+export default RegisterFormRedux;

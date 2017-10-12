@@ -5,15 +5,17 @@ import { connect } from 'react-redux';
 export const AuthenticatedRouteContainer = ({ component: Component, ...rest }) => {
   const { authenticated } = rest;
 
-  return (<Route {...rest} render={
+  return (<Route
+    {...rest}
+    render={
       props => (
-        authenticated ? (<Component {...props} />) : (<Redirect to='/login'/>)
+        authenticated ? (<Component {...props} />) : (<Redirect to="/login" />)
       )
     }
   />);
-}
+};
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = state => ({
   authenticated: state.user.authenticated,
 });
 

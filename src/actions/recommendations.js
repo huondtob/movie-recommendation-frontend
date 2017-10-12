@@ -4,20 +4,20 @@ export const REQUEST_RECOMMENDATIONS_FAILURE = 'REQUEST_RECOMMENDATIONS_FAILURE'
 
 export function requestRecommendations() {
   return {
-    type: REQUEST_RECOMMENDATIONS
-  }
+    type: REQUEST_RECOMMENDATIONS,
+  };
 }
 
 export function requestRecommendationsSuccess(recommendations) {
   return {
     type: REQUEST_RECOMMENDATIONS_SUCCESS,
-    recommendations
-  }
+    recommendations,
+  };
 }
 
 export function requestRecommendationsFailure(error) {
   return {
     type: REQUEST_RECOMMENDATIONS_FAILURE,
-    error
-  }
+    error,
+  };
 }

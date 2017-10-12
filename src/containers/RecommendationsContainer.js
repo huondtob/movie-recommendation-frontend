@@ -6,42 +6,38 @@ import Recommendations from '../components/Recommendations';
 
 const BASE_URL = 'http://localhost:3001/api';
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = state => ({
   recommendationsError: state.recommendations.error,
-  movies: state.recommendations.recommendedMovies
+  movies: state.recommendations.recommendedMovies,
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    getRecommendedMovies: (event) => {
-      dispatch(requestRecommendations());
+const mapDispatchToProps = dispatch => ({
+  getRecommendedMovies: () => {
+    dispatch(requestRecommendations());
 
-      const authToken = localStorage.getItem('token');
+    const authToken = localStorage.getItem('token');
 
-      const headers = new Headers({
-        'Authorization': `Bearer ${authToken}`
-      });
+    const headers = new Headers({
+      Authorization: `Bearer ${authToken}`,
+    });
 
-      return fetch(`${BASE_URL}/movie`, { headers })
-        .then(response => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            return response.json()
-              .then((errBody) => {
-                throw new Error(errBody.error);
-              });
-          }
-        })
-        .then(json => {
-          dispatch(requestRecommendationsSuccess(json.movies));
-        })
-        .catch(err => dispatch(requestRecommendationsFailure(err)));
-    }
-  }
-}
+    return fetch(`${BASE_URL}/movie`, { headers })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+
+        return response.json()
+          .then((errBody) => {
+            throw new Error(errBody.error);
+          });
+      })
+      .then(json => dispatch(requestRecommendationsSuccess(json.movies)))
+      .catch(err => dispatch(requestRecommendationsFailure(err)));
+  },
+});
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Recommendations);

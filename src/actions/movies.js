@@ -4,20 +4,20 @@ export const REQUEST_MOVIES_FAILURE = 'REQUEST_MOVIES_FAILURE';
 
 export function requestMovies() {
   return {
-    type: REQUEST_MOVIES
-  }
+    type: REQUEST_MOVIES,
+  };
 }
 
 export function requestMoviesSuccess(movies) {
   return {
     type: REQUEST_MOVIES_SUCCESS,
-    movies
-  }
+    movies,
+  };
 }
 
 export function requestMoviesFailure(error) {
   return {
     type: REQUEST_MOVIES_FAILURE,
-    error
-  }
+    error,
+  };
 }

@@ -4,40 +4,36 @@ import SearchMovies from '../components/SearchMovies';
 
 const BASE_URL = 'http://localhost:3001/api';
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = state => ({
   moviesError: state.movies.error,
-  movies: state.movies.movieList
+  movies: state.movies.movieList,
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    handleChange: (event) => {
-      dispatch(requestMovies());
+const mapDispatchToProps = dispatch => ({
+  handleChange: (event) => {
+    dispatch(requestMovies());
 
-      const authToken = localStorage.getItem('token');
+    const authToken = localStorage.getItem('token');
 
-      const headers = new Headers({
-        'Authorization': `Bearer ${authToken}`
-      });
+    const headers = new Headers({
+      Authorization: `Bearer ${authToken}`,
+    });
 
-      return fetch(`${BASE_URL}/movie/?name=${event.target.value}`, { headers })
-        .then(response => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            return response.json()
-              .then((errBody) => {
-                throw new Error(errBody.error);
-              });
-          }
-        })
-        .then(json => {
-          dispatch(requestMoviesSuccess(json.movies));
-        })
-        .catch(err => dispatch(requestMoviesFailure(err)));
-    }
-  }
-}
+    return fetch(`${BASE_URL}/movie/?name=${event.target.value}`, { headers })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+
+        return response.json()
+          .then((errBody) => {
+            throw new Error(errBody.error);
+          });
+      })
+      .then(json => dispatch(requestMoviesSuccess(json.movies)))
+      .catch(err => dispatch(requestMoviesFailure(err)));
+  },
+});
 
 export default connect(
   mapStateToProps,
