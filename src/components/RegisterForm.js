@@ -1,8 +1,48 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { registerUser, registerUserSuccess, registerUserFailure } from '../actions/user';
+import { SubmissionError } from 'redux-form';
+import { push } from 'react-router-redux';
+
+const BASE_URL = 'http://localhost:3001/api';
+
+const handleRegisterUser = (values, dispatch, props) => {
+  dispatch(registerUser());
+
+  const headers = new Headers({
+    "Content-Type": "application/json"
+  });
+
+  return fetch(`${BASE_URL}/auth/register`, {
+      method: 'post',
+      headers,
+      body: JSON.stringify(values)
+    })
+    .then(response => {
+      if (response.ok) {
+        return;
+      } else {
+        return response.json()
+          .then((err) => {
+            throw new SubmissionError({
+              _error: 'Registration failed'
+             })
+          });
+      }
+    });
+};
+
+const handleRegisterUserSuccess = (result, dispatch, props) => {
+  dispatch(registerUserSuccess());
+  dispatch(push('/login'));
+};
+
+const handleRegisterUserFailure = (errors, dispatch, submitError, props) => {
+  dispatch(registerUserFailure(submitError));
+};
 
 let RegisterForm = (props) => {
-  const { handleSubmit, userError } = props;
+  const { handleSubmit, error } = props;
 
   return (
     <form onSubmit={handleSubmit}>
@@ -26,14 +66,17 @@ let RegisterForm = (props) => {
         <Field name="passwordConfirmation" component="input" type="password" required/>
       </label>
       <br />
-      { userError && <strong>{'There was an error with your submission'}</strong> }
+      { error && <strong>{ error }</strong> }
       <input type="submit" value="Submit" />
     </form>
   );
 }
 
 RegisterForm = reduxForm({
-  form: 'register'
+  form: 'register',
+  onSubmit: handleRegisterUser,
+  onSubmitSuccess: handleRegisterUserSuccess,
+  onSubmitFail: handleRegisterUserFailure
 })(RegisterForm)
 
 export default RegisterForm;
