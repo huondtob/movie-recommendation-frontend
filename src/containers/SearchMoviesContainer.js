@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   handleChange: (event) => {
-    dispatch(requestMovies());
+    dispatch(requestMovies);
 
     const authToken = localStorage.getItem('token');
 

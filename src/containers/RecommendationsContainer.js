@@ -13,7 +13,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getRecommendedMovies: () => {
-    dispatch(requestRecommendations());
+    dispatch(requestRecommendations);
 
     const authToken = localStorage.getItem('token');
 

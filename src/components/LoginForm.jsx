@@ -6,7 +6,7 @@ import { loginUser, loginUserSuccess, loginUserFailure } from '../actions/user';
 const BASE_URL = 'http://localhost:3001/api';
 
 const handleLoginUser = (values, dispatch) => {
-  dispatch(loginUser());
+  dispatch(loginUser);
 
   const headers = new Headers({
     'Content-Type': 'application/json',
@@ -33,11 +33,10 @@ const handleLoginUser = (values, dispatch) => {
 
 const handleLoginUserSuccess = (result, dispatch) => {
   localStorage.setItem('token', result.token);
-  dispatch(loginUserSuccess());
+  dispatch(loginUserSuccess);
 };
 
 const handleLoginUserFailure = (errors, dispatch, submitError) => {
-  console.log(errors);
   dispatch(loginUserFailure(submitError));
 };
 
@@ -54,12 +53,12 @@ const LoginForm = (props) => {
     <form onSubmit={handleSubmit}>
       <label>
         Username:
-        <Field name="username" component="input" type="text" required/>
+        <Field name="username" component="input" type="text" required />
       </label>
       <br />
       <label>
         Password:
-        <Field name="password" component="input" type="password" required/>
+        <Field name="password" component="input" type="password" required />
       </label>
       <br />
       { error && <strong>{ error }</strong> }

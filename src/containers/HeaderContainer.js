@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   handleLogout: () => {
-    dispatch(logoutUser());
+    dispatch(logoutUser);
 
     const authToken = localStorage.getItem('token');
 
@@ -31,7 +31,7 @@ const mapDispatchToProps = dispatch => ({
       })
       .then(() => {
         localStorage.clear();
-        dispatch(logoutUserSuccess());
+        dispatch(logoutUserSuccess);
       })
       .catch(err => dispatch(logoutUserFailure(err)));
   },

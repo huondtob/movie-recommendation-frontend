@@ -1,58 +1,58 @@
 import React from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
-import { push } from 'react-router-redux';
-import { registerUser, registerUserSuccess, registerUserFailure } from '../actions/user';
+import { Redirect } from 'react-router-dom';
+import { setPassword, setPasswordSuccess, setPasswordFailure } from '../actions/reset';
 
 const BASE_URL = 'http://localhost:3001/api';
 
-const handleRegisterUser = (values, dispatch) => {
-  dispatch(registerUser);
+const handleSetPassword = (values, dispatch) => {
+  dispatch(setPassword);
 
   const headers = new Headers({
     'Content-Type': 'application/json',
   });
 
-  return fetch(`${BASE_URL}/auth/register`, {
+  return fetch(`${BASE_URL}/auth/set-password`, {
     method: 'post',
     headers,
     body: JSON.stringify(values),
   })
     .then((response) => {
       if (response.ok) {
-        return undefined;
+        return response.json();
       }
 
       return response.json()
         .then(() => {
           throw new SubmissionError({
-            _error: 'Registration failed',
+            _error: 'Password reset failed',
           });
         });
     });
 };
 
-const handleRegisterUserSuccess = (result, dispatch) => {
-  dispatch(registerUserSuccess);
-  dispatch(push('/login'));
+const handleSetPasswordSuccess = (result, dispatch) => {
+  dispatch(setPasswordSuccess);
 };
 
-const handleRegisterUserFailure = (errors, dispatch, submitError) => {
-  dispatch(registerUserFailure(submitError));
+const handleSetPasswordFailure = (errors, dispatch, submitError) => {
+  dispatch(setPasswordFailure(submitError));
 };
 
-const RegisterForm = (props) => {
-  const { handleSubmit, error } = props;
+const SetPasswordForm = (props) => {
+  const { handleSubmit, error, authenticated } = props;
+
+  if (authenticated) {
+    return (
+      <Redirect to="/" />
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit}>
       <label>
         Username:
         <Field name="username" component="input" type="text" required />
-      </label>
-      <br />
-      <label>
-        Email:
-        <Field name="email" component="input" type="email" required />
       </label>
       <br />
       <label>
@@ -71,11 +71,11 @@ const RegisterForm = (props) => {
   );
 };
 
-const RegisterFormRedux = reduxForm({
-  form: 'register',
-  onSubmit: handleRegisterUser,
-  onSubmitSuccess: handleRegisterUserSuccess,
-  onSubmitFail: handleRegisterUserFailure,
-})(RegisterForm);
+const SetPasswordFormRedux = reduxForm({
+  form: 'setPassword',
+  onSubmit: handleSetPassword,
+  onSubmitSuccess: handleSetPasswordSuccess,
+  onSubmitFail: handleSetPasswordFailure,
+})(SetPasswordForm);
 
-export default RegisterFormRedux;
+export default SetPasswordFormRedux;
