@@ -1,18 +1,22 @@
 import React from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
+import queryString from 'query-string';
 import { Redirect } from 'react-router-dom';
 import { setPassword, setPasswordSuccess, setPasswordFailure } from '../actions/reset';
 
 const BASE_URL = 'http://localhost:3001/api';
 
-const handleSetPassword = (values, dispatch) => {
+const handleSetPassword = (values, dispatch, { location }) => {
   dispatch(setPassword);
 
   const headers = new Headers({
     'Content-Type': 'application/json',
   });
 
-  return fetch(`${BASE_URL}/auth/set-password`, {
+  const parsedQueryString = queryString.parse(location.search);
+  const { resetToken } = parsedQueryString;
+
+  return fetch(`${BASE_URL}/auth/set-password?resetToken=${resetToken}`, {
     method: 'post',
     headers,
     body: JSON.stringify(values),

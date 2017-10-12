@@ -21,7 +21,7 @@ const store = createStore(
 const authToken = localStorage.getItem('token');
 
 if (authToken) {
-  store.dispatch(loginUserSuccess());
+  store.dispatch(loginUserSuccess);
 }
 
 ReactDOM.render(
