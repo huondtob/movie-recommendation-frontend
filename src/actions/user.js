@@ -18,65 +18,55 @@ export const DELETE_USER = 'DELETE_USER';
 export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
 export const DELETE_USER_FAILURE = 'DELETE_USER_FAILURE';
 
+export const RESET_PASSWORD = 'RESET_PASSWORD';
+export const RESET_PASSWORD_SUCCESS = 'RESET_PASSWORD_SUCCESS';
+export const RESET_PASSWORD_FAILURE = 'RESET_PASSWORD_FAILURE';
+
+export const SET_PASSWORD = 'SET_PASSWORD';
+export const SET_PASSWORD_SUCCESS = 'SET_PASSWORD_SUCCESS';
+export const SET_PASSWORD_FAILURE = 'SET_PASSWORD_FAILURE';
+
 export const ADD_WATCHED_MOVIE = 'ADD_WATCHED_MOVIE';
 export const ADD_WATCHED_MOVIE_SUCCESS = 'ADD_WATCHED_MOVIE_SUCCESS';
 export const ADD_WATCHED_MOVIE_FAILURE = 'ADD_WATCHED_MOVIE_FAILURE';
 
-export const logoutUser = () => ({
-  type: LOGOUT_USER,
-});
+export const logoutUser = { type: LOGOUT_USER };
 
-export const logoutUserSuccess = () => ({
-  type: LOGOUT_USER_SUCCESS,
-});
+export const logoutUserSuccess = { type: LOGOUT_USER_SUCCESS };
 
 export const logoutUserFailure = error => ({
   type: LOGOUT_USER_FAILURE,
   error,
 });
 
-export const loginUser = () => ({
-  type: LOGIN_USER,
-});
+export const loginUser = { type: LOGIN_USER };
 
-export const loginUserSuccess = () => ({
-  type: LOGIN_USER_SUCCESS,
-});
+export const loginUserSuccess = { type: LOGIN_USER_SUCCESS };
 
 export const loginUserFailure = error => ({
   type: LOGIN_USER_FAILURE,
   error,
 });
 
-export const registerUser = () => ({
-  type: REGISTER_USER,
-});
+export const registerUser = { type: REGISTER_USER };
 
-export const registerUserSuccess = () => ({
-  type: REGISTER_USER_SUCCESS,
-});
+export const registerUserSuccess = { type: REGISTER_USER_SUCCESS };
 
 export const registerUserFailure = error => ({
   type: REGISTER_USER_FAILURE,
   error,
 });
 
-export const deleteUser = () => ({
-  type: DELETE_USER,
-});
+export const deleteUser = { type: DELETE_USER };
 
-export const deleteUserSuccess = () => ({
-  type: DELETE_USER_SUCCESS,
-});
+export const deleteUserSuccess = { type: DELETE_USER_SUCCESS };
 
 export const deleteUserFailure = error => ({
   type: DELETE_USER_FAILURE,
   error,
 });
 
-export const requestUser = () => ({
-  type: REQUEST_USER,
-});
+export const requestUser = { type: REQUEST_USER };
 
 export const requestUserSuccess = user => ({
   type: REQUEST_USER_SUCCESS,
@@ -88,9 +78,7 @@ export const requestUserFailure = error => ({
   error,
 });
 
-export const addWatchedMovie = () => ({
-  type: ADD_WATCHED_MOVIE,
-});
+export const addWatchedMovie = { type: ADD_WATCHED_MOVIE };
 
 export const addWatchedMovieSuccess = movie => ({
   type: ADD_WATCHED_MOVIE_SUCCESS,
