@@ -32,7 +32,7 @@ export default class SearchMovies extends React.Component {
             throw new Error(errBody.error);
           });
       })
-      .then(json => this.setState({ movies: json.movies }))
+      .then(movies => this.setState({ movies }))
       .catch(error => this.setState({ error }));
   }
 

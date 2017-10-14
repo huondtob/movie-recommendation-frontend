@@ -36,7 +36,7 @@ export default class Recommendations extends React.Component {
             throw new Error(errBody.error);
           });
       })
-      .then(json => this.setState({ recommendations: json.movies }))
+      .then(recommendations => this.setState({ recommendations }))
       .catch(error => this.setState({ error }));
   }
 

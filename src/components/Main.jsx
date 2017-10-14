@@ -6,9 +6,9 @@ import RegisterContainer from '../containers/RegisterContainer';
 import SearchMovies from '../components/SearchMovies';
 import Recommendations from '../components/Recommendations';
 import AuthenticatedRouteContainer from '../containers/AuthenticatedRouteContainer';
+import AdminRouteContainer from '../containers/AdminRouteContainer';
 import PasswordResetContainer from '../containers/PasswordResetContainer';
 import SetPasswordContainer from '../containers/SetPasswordContainer';
-
 import Users from './Users';
 
 export default function Main() {
@@ -20,9 +20,13 @@ export default function Main() {
         <Route path="/register" component={RegisterContainer} />
         <Route path="/reset-password" component={PasswordResetContainer} />
         <Route path="/set-password" component={SetPasswordContainer} />
-        <AuthenticatedRouteContainer path="/movies" component={SearchMovies} />
-        <AuthenticatedRouteContainer path="/recommendations" component={Recommendations} />
-        <AuthenticatedRouteContainer path="/users" component={Users} />
+        <AuthenticatedRouteContainer>
+          <Route path="/movies" component={SearchMovies} />
+          <Route path="/recommendations" component={Recommendations} />
+          <AdminRouteContainer>
+            <Route path="/users" component={Users} />
+          </AdminRouteContainer>
+        </AuthenticatedRouteContainer>
       </Switch>
     </main>
   );

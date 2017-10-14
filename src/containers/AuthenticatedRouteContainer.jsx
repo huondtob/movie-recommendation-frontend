@@ -1,15 +1,14 @@
 import React from 'react';
-import { Redirect, Route, withRouter } from 'react-router-dom';
+import { Redirect, Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-export const AuthenticatedRouteContainer = ({ component: Component, ...rest }) => {
-  const { authenticated } = rest;
+const AuthenticatedRouteContainer = (props) => {
+  const { authenticated } = props;
 
   return (<Route
-    {...rest}
     render={
-      props => (
-        authenticated ? (<Component {...props} />) : (<Redirect to="/login" />)
+      () => (
+        authenticated ? (<Switch>{props.children}</Switch>) : (<Redirect to="/login" />)
       )
     }
   />);
