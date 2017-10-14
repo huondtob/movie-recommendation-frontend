@@ -5,7 +5,7 @@ import FormField from './FormField';
 
 const BASE_URL = 'http://localhost:3001/api';
 
-const handlePasswordReset = (values, dispatch) => {
+const handlePasswordReset = (values) => {
   const headers = new Headers({
     'Content-Type': 'application/json',
   });
@@ -36,11 +36,8 @@ const handlePasswordReset = (values, dispatch) => {
     });
 };
 
-const handlePasswordResetSuccess = (result, dispatch) => {
-};
-
 const PasswordResetForm = (props) => {
-  const { handleSubmit, error, authenticated } = props;
+  const { handleSubmit, error, authenticated, submitSucceeded } = props;
 
   if (authenticated) {
     return (
@@ -55,8 +52,10 @@ const PasswordResetForm = (props) => {
         <Field name="email" component={FormField} type="email" />
       </label>
       <br />
+      { submitSucceeded && <strong>An Email has been sent</strong> }
       { error && <strong>{ error }</strong> }
       <input type="submit" value="Submit" />
+
     </form>
   );
 };
@@ -64,7 +63,6 @@ const PasswordResetForm = (props) => {
 const PasswordResetFormRedux = reduxForm({
   form: 'resetPassword',
   onSubmit: handlePasswordReset,
-  onSubmitSuccess: handlePasswordResetSuccess,
 })(PasswordResetForm);
 
 export default PasswordResetFormRedux;

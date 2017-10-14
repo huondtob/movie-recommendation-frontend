@@ -5,7 +5,7 @@ import FormField from './FormField';
 
 const BASE_URL = 'http://localhost:3001/api';
 
-const handleRegisterUser = (values, dispatch) => {
+const handleRegisterUser = (values) => {
   const headers = new Headers({
     'Content-Type': 'application/json',
   });

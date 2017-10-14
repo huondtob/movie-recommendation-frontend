@@ -2,6 +2,7 @@ import React from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import queryString from 'query-string';
 import { Redirect } from 'react-router-dom';
+import { push } from 'react-router-redux';
 import FormField from './FormField';
 
 const BASE_URL = 'http://localhost:3001/api';
@@ -41,6 +42,7 @@ const handleSetPassword = (values, dispatch, { location }) => {
 };
 
 const handleSetPasswordSuccess = (result, dispatch) => {
+  dispatch(push('/login'));
 };
 
 const SetPasswordForm = (props) => {
