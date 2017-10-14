@@ -41,13 +41,23 @@ export default class Recommendations extends React.Component {
   }
 
   render() {
-    const recommendationContainers = this.state.recommendations.map(movie =>
-      (<div key={movie}>{movie}</div>));
+    const recommendationRows = this.state.recommendations.map(movie =>
+      (
+        <tr key={movie}>
+          <td>{movie}</td>
+        </tr>
+      ));
 
     return (
       <div>
         <h1>Recommendations</h1>
-        { recommendationContainers }
+        <table>
+          <tr>
+            <th>Name</th>
+          </tr>
+          { recommendationRows }
+        </table>
+
         { this.state.error &&
           <strong>There was an error fetching recommendations</strong> }
       </div>

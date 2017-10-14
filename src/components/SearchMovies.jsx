@@ -37,15 +37,27 @@ export default class SearchMovies extends React.Component {
   }
 
   render() {
-    const movieContainers = this.state.movies.map(movie =>
-      (<div key={movie}>{movie}</div>));
+    const movieRows = this.state.movies.map(movie =>
+      (
+        <tr key={movie}>
+          <td>{movie}</td>
+          <td><button>Watched</button></td>
+        </tr>
+      ));
 
     return (
       <div>
         <h1>Search movies</h1>
         <input type="text" onChange={this.handleChange} />
 
-        { movieContainers }
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Action</th>
+          </tr>
+          { movieRows }
+        </table>
+
         { this.state.error &&
           <strong>There was an error while fetching movies</strong> }
       </div>

@@ -41,13 +41,25 @@ export default class Users extends React.Component {
   }
 
   render() {
-    const userContainers = this.state.users.map(user =>
-      (<div key={user.usernamer}>{user.username}</div>));
+    const userRows = this.state.users.map(user =>
+      (
+        <tr key={user.usernamer}>
+          <td>{user.username}</td>
+          <td><button>Delete</button></td>
+        </tr>
+      ));
 
     return (
       <div>
         <h1>Users</h1>
-        { userContainers }
+        <table>
+          <tr>
+            <th>Username</th>
+            <th>Action</th>
+          </tr>
+          { userRows }
+        </table>
+
         { this.state.error &&
           <strong>There was an error fetching all users</strong> }
       </div>
