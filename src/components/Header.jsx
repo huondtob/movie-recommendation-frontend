@@ -11,7 +11,6 @@ export default function Header(props) {
         <ul>
           <li><Link to="/">Home</Link></li>
           <li><Link to="/register">Register</Link></li>
-          { !authenticated && <li><Link to="/reset-password">Reset password</Link></li> }
           { !authenticated && <li><Link to="/login">Login</Link></li> }
           { authenticated && <li><Link to="/movies">Search movies</Link></li> }
           { authenticated && isAdmin && <li><Link to="/users">Users</Link></li> }

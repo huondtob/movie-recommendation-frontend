@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import { decode } from 'jsonwebtoken';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { loginUser, loginUserSuccess, loginUserFailure } from '../actions/user';
 
 const BASE_URL = 'http://localhost:3001/api';
@@ -65,6 +65,7 @@ const LoginForm = (props) => {
       <br />
       { error && <strong>{ error }</strong> }
       <input type="submit" value="Submit" />
+      <Link to="/reset-password">Reset password</Link>
     </form>
   );
 };
