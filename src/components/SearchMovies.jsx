@@ -8,20 +8,26 @@ export default class SearchMovies extends React.Component {
 
     this.state = {
       movies: [],
+      name: '',
       error: null,
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleClickSearch = this.handleClickSearch.bind(this);
   }
 
   handleChange(event) {
+    this.setState({ name: event.target.value });
+  }
+
+  handleClickSearch() {
     const authToken = localStorage.getItem('token');
 
     const headers = new Headers({
       Authorization: `Bearer ${authToken}`,
     });
 
-    return fetch(`${BASE_URL}/movie/?name=${event.target.value}`, { headers })
+    return fetch(`${BASE_URL}/movie/?name=${this.state.name}`, { headers })
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -32,7 +38,37 @@ export default class SearchMovies extends React.Component {
             throw new Error(errBody.error);
           });
       })
-      .then(movies => this.setState({ movies }))
+      .then(movies => this.setState({ movies, error: null }))
+      .catch(error => this.setState({ error }));
+  }
+
+  handleClickWatched(movieId) {
+    const authToken = localStorage.getItem('token');
+
+    const headers = new Headers({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type': 'application/json',
+    });
+
+    return fetch(
+      `${BASE_URL}/user/${this.props.username}/watched`,
+      {
+        method: 'put',
+        headers,
+        body: JSON.stringify([movieId]),
+      },
+    )
+      .then((response) => {
+        if (response.ok) {
+          return null;
+        }
+
+        return response.json()
+          .then((errBody) => {
+            throw new Error(errBody.error);
+          });
+      })
+      .then(() => this.setState({ error: null }))
       .catch(error => this.setState({ error }));
   }
 
@@ -41,7 +77,7 @@ export default class SearchMovies extends React.Component {
       (
         <tr key={movie.id}>
           <td>{movie.title}</td>
-          <td><button>Watched</button></td>
+          <td><button onClick={() => this.handleClickWatched(movie.id)}>Watched</button></td>
         </tr>
       ));
 
@@ -49,7 +85,7 @@ export default class SearchMovies extends React.Component {
       <div>
         <h1>Search movies</h1>
         <input type="text" onChange={this.handleChange} />
-
+        <button onClick={this.handleClickSearch}>Search</button>
         <table>
           <thead>
             <tr>

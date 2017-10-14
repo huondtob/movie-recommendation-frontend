@@ -22,8 +22,8 @@ const store = createStore(
 const authToken = localStorage.getItem('token');
 
 if (authToken) {
-  const { isAdmin } = decode(authToken);
-  store.dispatch(loginUserSuccess(isAdmin));
+  const { isAdmin, sub } = decode(authToken);
+  store.dispatch(loginUserSuccess(isAdmin, sub));
 }
 
 ReactDOM.render(

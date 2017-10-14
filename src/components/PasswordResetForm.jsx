@@ -16,7 +16,7 @@ const handlePasswordReset = (values, dispatch) => {
   })
     .then((response) => {
       if (response.ok) {
-        return response.json();
+        return null;
       }
 
       return response.json()

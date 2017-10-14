@@ -3,7 +3,7 @@ import { LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE, LOGOUT_USER, LOGOUT
 } from '../actions/user';
 
 const INITIAL_STATE = {
-  authenticated: false, isAdmin: false, error: null, loading: false,
+  authenticated: false, username: null, isAdmin: false, error: null, loading: false,
 };
 
 export default function (state = INITIAL_STATE, action) {
@@ -15,12 +15,22 @@ export default function (state = INITIAL_STATE, action) {
 
     case LOGIN_USER_SUCCESS:
       return {
-        ...state, authenticated: true, isAdmin: action.isAdmin, error: null, loading: false,
+        ...state,
+        authenticated: true,
+        username: action.username,
+        isAdmin: action.isAdmin,
+        error: null,
+        loading: false,
       };
 
     case LOGIN_USER_FAILURE:
       return {
-        ...state, authenticated: false, isAdmin: false, error: action.error, loading: false,
+        ...state,
+        authenticated: false,
+        username: null,
+        isAdmin: false,
+        error: action.error,
+        loading: false,
       };
 
     case LOGOUT_USER:
@@ -28,7 +38,12 @@ export default function (state = INITIAL_STATE, action) {
 
     case LOGOUT_USER_SUCCESS:
       return {
-        ...state, authenticated: false, isAdmin: false, error: null, loading: false,
+        ...state,
+        authenticated: false,
+        username: null,
+        isAdmin: false,
+        error: null,
+        loading: false,
       };
 
     case LOGOUT_USER_FAILURE:

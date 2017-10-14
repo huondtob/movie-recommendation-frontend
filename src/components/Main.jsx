@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './Home';
 import LoginContainer from '../containers/LoginContainer';
 import RegisterContainer from '../containers/RegisterContainer';
-import SearchMovies from '../components/SearchMovies';
+import SearchMoviesContainer from '../containers/SearchMoviesContainer';
 import AuthenticatedRouteContainer from '../containers/AuthenticatedRouteContainer';
 import AdminRouteContainer from '../containers/AdminRouteContainer';
 import PasswordResetContainer from '../containers/PasswordResetContainer';
@@ -20,7 +20,7 @@ export default function Main() {
         <Route path="/reset-password" component={PasswordResetContainer} />
         <Route path="/set-password" component={SetPasswordContainer} />
         <AuthenticatedRouteContainer>
-          <Route path="/movies" component={SearchMovies} />
+          <Route path="/movies" component={SearchMoviesContainer} />
           <AdminRouteContainer>
             <Route path="/users" component={Users} />
           </AdminRouteContainer>

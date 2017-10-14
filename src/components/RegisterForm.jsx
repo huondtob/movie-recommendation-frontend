@@ -16,7 +16,7 @@ const handleRegisterUser = (values, dispatch) => {
   })
     .then((response) => {
       if (response.ok) {
-        return undefined;
+        return null;
       }
 
       return response.json()

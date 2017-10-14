@@ -17,7 +17,8 @@ export const logoutUserFailure = error => ({
 
 export const loginUser = { type: LOGIN_USER };
 
-export const loginUserSuccess = isAdmin => ({ type: LOGIN_USER_SUCCESS, isAdmin });
+export const loginUserSuccess = (isAdmin, username) =>
+  ({ type: LOGIN_USER_SUCCESS, isAdmin, username });
 
 export const loginUserFailure = error => ({
   type: LOGIN_USER_FAILURE,

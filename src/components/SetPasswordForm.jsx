@@ -20,7 +20,7 @@ const handleSetPassword = (values, dispatch, { location }) => {
   })
     .then((response) => {
       if (response.ok) {
-        return response.json();
+        return null;
       }
 
       return response.json()

@@ -33,9 +33,9 @@ const handleLoginUser = (values, dispatch) => {
 };
 
 const handleLoginUserSuccess = (result, dispatch) => {
-  const { isAdmin } = decode(result.token);
+  const { isAdmin, sub } = decode(result.token);
   localStorage.setItem('token', result.token);
-  dispatch(loginUserSuccess(isAdmin));
+  dispatch(loginUserSuccess(isAdmin, sub));
 };
 
 const handleLoginUserFailure = (errors, dispatch, submitError) => {
