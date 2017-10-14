@@ -40,12 +40,40 @@ export default class Users extends React.Component {
       .catch(error => this.setState({ error }));
   }
 
+  handleClickDelete(username) {
+    const authToken = localStorage.getItem('token');
+
+    const headers = new Headers({
+      Authorization: `Bearer ${authToken}`,
+    });
+
+    return fetch(
+      `${BASE_URL}/user/${username}`,
+      {
+        headers,
+        method: 'delete',
+      },
+    )
+      .then((response) => {
+        if (response.ok) {
+          return null;
+        }
+
+        return response.json()
+          .then((errBody) => {
+            throw new Error(errBody.error);
+          });
+      })
+      .then(() => this.getUsers())
+      .catch(error => this.setState({ error }));
+  }
+
   render() {
     const userRows = this.state.users.map(user =>
       (
-        <tr key={user.usernamer}>
+        <tr key={user.username}>
           <td>{user.username}</td>
-          <td><button>Delete</button></td>
+          <td><button onClick={() => this.handleClickDelete(user.username)}>Delete</button></td>
         </tr>
       ));
 
