@@ -14,7 +14,6 @@ export default function Header(props) {
           { !authenticated && <li><Link to="/reset-password">Reset password</Link></li> }
           { !authenticated && <li><Link to="/login">Login</Link></li> }
           { authenticated && <li><Link to="/movies">Search movies</Link></li> }
-          { authenticated && <li><Link to="/recommendations">Recommendations</Link></li> }
           { authenticated && isAdmin && <li><Link to="/users">Users</Link></li> }
           { authenticated && <li><button onClick={handleLogout}>Logout</button></li> }
         </ul>

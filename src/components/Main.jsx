@@ -4,7 +4,6 @@ import Home from './Home';
 import LoginContainer from '../containers/LoginContainer';
 import RegisterContainer from '../containers/RegisterContainer';
 import SearchMovies from '../components/SearchMovies';
-import Recommendations from '../components/Recommendations';
 import AuthenticatedRouteContainer from '../containers/AuthenticatedRouteContainer';
 import AdminRouteContainer from '../containers/AdminRouteContainer';
 import PasswordResetContainer from '../containers/PasswordResetContainer';
@@ -22,7 +21,6 @@ export default function Main() {
         <Route path="/set-password" component={SetPasswordContainer} />
         <AuthenticatedRouteContainer>
           <Route path="/movies" component={SearchMovies} />
-          <Route path="/recommendations" component={Recommendations} />
           <AdminRouteContainer>
             <Route path="/users" component={Users} />
           </AdminRouteContainer>

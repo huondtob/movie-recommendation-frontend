@@ -39,8 +39,8 @@ export default class SearchMovies extends React.Component {
   render() {
     const movieRows = this.state.movies.map(movie =>
       (
-        <tr key={movie}>
-          <td>{movie}</td>
+        <tr key={movie.id}>
+          <td>{movie.title}</td>
           <td><button>Watched</button></td>
         </tr>
       ));
@@ -51,11 +51,15 @@ export default class SearchMovies extends React.Component {
         <input type="text" onChange={this.handleChange} />
 
         <table>
-          <tr>
-            <th>Name</th>
-            <th>Action</th>
-          </tr>
-          { movieRows }
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            { movieRows }
+          </tbody>
         </table>
 
         { this.state.error &&
