@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import { push } from 'react-router-redux';
+import FormField from './FormField';
 
 const BASE_URL = 'http://localhost:3001/api';
 
@@ -20,9 +21,16 @@ const handleRegisterUser = (values, dispatch) => {
       }
 
       return response.json()
-        .then(() => {
+        .then(({ error }) => {
+          if (error.errors) {
+            throw new SubmissionError({
+              ...error.errors,
+              _error: error.message,
+            });
+          }
+
           throw new SubmissionError({
-            _error: 'Registration failed',
+            _error: error.message,
           });
         });
     });
@@ -32,9 +40,6 @@ const handleRegisterUserSuccess = (result, dispatch) => {
   dispatch(push('/login'));
 };
 
-const handleRegisterUserFailure = (errors, dispatch, submitError) => {
-};
-
 const RegisterForm = (props) => {
   const { handleSubmit, error } = props;
 
@@ -42,22 +47,22 @@ const RegisterForm = (props) => {
     <form onSubmit={handleSubmit}>
       <label>
         Username:
-        <Field name="username" component="input" type="text" required />
+        <Field name="username" component={FormField} type="text" />
       </label>
       <br />
       <label>
         Email:
-        <Field name="email" component="input" type="email" required />
+        <Field name="email" component={FormField} type="email" />
       </label>
       <br />
       <label>
         Password:
-        <Field name="password" component="input" type="password" required />
+        <Field name="password" component={FormField} type="password" />
       </label>
       <br />
       <label>
         Password confirmation:
-        <Field name="passwordConfirmation" component="input" type="password" required />
+        <Field name="passwordConfirmation" component={FormField} type="password" />
       </label>
       <br />
       { error && <strong>{ error }</strong> }
@@ -70,7 +75,7 @@ const RegisterFormRedux = reduxForm({
   form: 'register',
   onSubmit: handleRegisterUser,
   onSubmitSuccess: handleRegisterUserSuccess,
-  onSubmitFail: handleRegisterUserFailure,
+
 })(RegisterForm);
 
 export default RegisterFormRedux;

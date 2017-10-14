@@ -3,6 +3,7 @@ import { Field, reduxForm, SubmissionError } from 'redux-form';
 import { decode } from 'jsonwebtoken';
 import { Redirect, Link } from 'react-router-dom';
 import { loginUser, loginUserSuccess, loginUserFailure } from '../actions/user';
+import FormField from './FormField';
 
 const BASE_URL = 'http://localhost:3001/api';
 
@@ -24,9 +25,16 @@ const handleLoginUser = (values, dispatch) => {
       }
 
       return response.json()
-        .then(() => {
+        .then(({ error }) => {
+          if (error.errors) {
+            throw new SubmissionError({
+              ...error.errors,
+              _error: error.message,
+            });
+          }
+
           throw new SubmissionError({
-            _error: 'Login failed',
+            _error: error.message,
           });
         });
     });
@@ -55,12 +63,12 @@ const LoginForm = (props) => {
     <form onSubmit={handleSubmit}>
       <label>
         Username:
-        <Field name="username" component="input" type="text" required />
+        <Field name="username" component={FormField} type="text" />
       </label>
       <br />
       <label>
         Password:
-        <Field name="password" component="input" type="password" required />
+        <Field name="password" component={FormField} type="password" />
       </label>
       <br />
       { error && <strong>{ error }</strong> }

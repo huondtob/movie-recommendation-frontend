@@ -2,6 +2,7 @@ import React from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import queryString from 'query-string';
 import { Redirect } from 'react-router-dom';
+import FormField from './FormField';
 
 const BASE_URL = 'http://localhost:3001/api';
 
@@ -24,18 +25,22 @@ const handleSetPassword = (values, dispatch, { location }) => {
       }
 
       return response.json()
-        .then(() => {
+        .then(({ error }) => {
+          if (error.errors) {
+            throw new SubmissionError({
+              ...error.errors,
+              _error: error.message,
+            });
+          }
+
           throw new SubmissionError({
-            _error: 'Password reset failed',
+            _error: error.message,
           });
         });
     });
 };
 
 const handleSetPasswordSuccess = (result, dispatch) => {
-};
-
-const handleSetPasswordFailure = (errors, dispatch, submitError) => {
 };
 
 const SetPasswordForm = (props) => {
@@ -51,17 +56,17 @@ const SetPasswordForm = (props) => {
     <form onSubmit={handleSubmit}>
       <label>
         Username:
-        <Field name="username" component="input" type="text" required />
+        <Field name="username" component={FormField} type="text" />
       </label>
       <br />
       <label>
         Password:
-        <Field name="password" component="input" type="password" required />
+        <Field name="password" component={FormField} type="password" />
       </label>
       <br />
       <label>
         Password confirmation:
-        <Field name="passwordConfirmation" component="input" type="password" required />
+        <Field name="passwordConfirmation" component={FormField} type="password" />
       </label>
       <br />
       { error && <strong>{ error }</strong> }
@@ -74,7 +79,6 @@ const SetPasswordFormRedux = reduxForm({
   form: 'setPassword',
   onSubmit: handleSetPassword,
   onSubmitSuccess: handleSetPasswordSuccess,
-  onSubmitFail: handleSetPasswordFailure,
 })(SetPasswordForm);
 
 export default SetPasswordFormRedux;

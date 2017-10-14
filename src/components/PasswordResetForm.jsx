@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import { Redirect } from 'react-router-dom';
+import FormField from './FormField';
 
 const BASE_URL = 'http://localhost:3001/api';
 
@@ -20,18 +21,22 @@ const handlePasswordReset = (values, dispatch) => {
       }
 
       return response.json()
-        .then(() => {
+        .then(({ error }) => {
+          if (error.errors) {
+            throw new SubmissionError({
+              ...error.errors,
+              _error: error.message,
+            });
+          }
+
           throw new SubmissionError({
-            _error: 'Password reset failed',
+            _error: error.message,
           });
         });
     });
 };
 
 const handlePasswordResetSuccess = (result, dispatch) => {
-};
-
-const handlePasswordResetFailure = (errors, dispatch, submitError) => {
 };
 
 const PasswordResetForm = (props) => {
@@ -47,7 +52,7 @@ const PasswordResetForm = (props) => {
     <form onSubmit={handleSubmit}>
       <label>
         Email:
-        <Field name="email" component="input" type="email" required />
+        <Field name="email" component={FormField} type="email" />
       </label>
       <br />
       { error && <strong>{ error }</strong> }
@@ -60,7 +65,6 @@ const PasswordResetFormRedux = reduxForm({
   form: 'resetPassword',
   onSubmit: handlePasswordReset,
   onSubmitSuccess: handlePasswordResetSuccess,
-  onSubmitFail: handlePasswordResetFailure,
 })(PasswordResetForm);
 
 export default PasswordResetFormRedux;
