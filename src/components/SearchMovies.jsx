@@ -1,18 +1,54 @@
 import React from 'react';
 
-export default function SearchMovies(props) {
-  const { moviesError, movies, handleChange } = props;
+const BASE_URL = 'http://localhost:3001/api';
 
-  const movieContainers = movies.map(movie => (<div key={movie}>{movie}</div>));
+export default class SearchMovies extends React.Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div>
-      <h1>Search movies</h1>
-      <input type="text" onChange={handleChange} />
+    this.state = {
+      movies: [],
+      error: null,
+    };
 
-      { movieContainers }
-      { moviesError &&
-        <strong>There was an error processing while fetching movies</strong> }
-    </div>
-  );
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    const authToken = localStorage.getItem('token');
+
+    const headers = new Headers({
+      Authorization: `Bearer ${authToken}`,
+    });
+
+    return fetch(`${BASE_URL}/movie/?name=${event.target.value}`, { headers })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+
+        return response.json()
+          .then((errBody) => {
+            throw new Error(errBody.error);
+          });
+      })
+      .then(json => this.setState({ movies: json.movies }))
+      .catch(error => this.setState({ error }));
+  }
+
+  render() {
+    const movieContainers = this.state.movies.map(movie =>
+      (<div key={movie}>{movie}</div>));
+
+    return (
+      <div>
+        <h1>Search movies</h1>
+        <input type="text" onChange={this.handleChange} />
+
+        { movieContainers }
+        { this.state.error &&
+          <strong>There was an error while fetching movies</strong> }
+      </div>
+    );
+  }
 }

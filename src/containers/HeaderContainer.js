@@ -6,6 +6,7 @@ const BASE_URL = 'http://localhost:3001/api';
 
 const mapStateToProps = state => ({
   authenticated: state.user.authenticated,
+  isAdmin: state.user.isAdmin,
 });
 
 const mapDispatchToProps = dispatch => ({

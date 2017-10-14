@@ -1,13 +1,10 @@
 import React from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import { push } from 'react-router-redux';
-import { registerUser, registerUserSuccess, registerUserFailure } from '../actions/user';
 
 const BASE_URL = 'http://localhost:3001/api';
 
 const handleRegisterUser = (values, dispatch) => {
-  dispatch(registerUser);
-
   const headers = new Headers({
     'Content-Type': 'application/json',
   });
@@ -32,12 +29,10 @@ const handleRegisterUser = (values, dispatch) => {
 };
 
 const handleRegisterUserSuccess = (result, dispatch) => {
-  dispatch(registerUserSuccess);
   dispatch(push('/login'));
 };
 
 const handleRegisterUserFailure = (errors, dispatch, submitError) => {
-  dispatch(registerUserFailure(submitError));
 };
 
 const RegisterForm = (props) => {

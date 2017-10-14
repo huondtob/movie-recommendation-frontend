@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { decode } from 'jsonwebtoken';
 import { createStore, applyMiddleware } from 'redux';
 import createHistory from 'history/createHashHistory';
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
@@ -21,7 +22,8 @@ const store = createStore(
 const authToken = localStorage.getItem('token');
 
 if (authToken) {
-  store.dispatch(loginUserSuccess);
+  const { isAdmin } = decode(authToken);
+  store.dispatch(loginUserSuccess(isAdmin));
 }
 
 ReactDOM.render(

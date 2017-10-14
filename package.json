@@ -5,6 +5,7 @@
   "main": "./src/index.jsx",
   "dependencies": {
     "history": "^4.7.2",
+    "jsonwebtoken": "^8.1.0",
     "query-string": "^5.0.0",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",

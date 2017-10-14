@@ -2,13 +2,10 @@ import React from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import queryString from 'query-string';
 import { Redirect } from 'react-router-dom';
-import { setPassword, setPasswordSuccess, setPasswordFailure } from '../actions/reset';
 
 const BASE_URL = 'http://localhost:3001/api';
 
 const handleSetPassword = (values, dispatch, { location }) => {
-  dispatch(setPassword);
-
   const headers = new Headers({
     'Content-Type': 'application/json',
   });
@@ -36,11 +33,9 @@ const handleSetPassword = (values, dispatch, { location }) => {
 };
 
 const handleSetPasswordSuccess = (result, dispatch) => {
-  dispatch(setPasswordSuccess);
 };
 
 const handleSetPasswordFailure = (errors, dispatch, submitError) => {
-  dispatch(setPasswordFailure(submitError));
 };
 
 const SetPasswordForm = (props) => {

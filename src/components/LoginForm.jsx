@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
+import { decode } from 'jsonwebtoken';
 import { Redirect } from 'react-router-dom';
 import { loginUser, loginUserSuccess, loginUserFailure } from '../actions/user';
 
@@ -32,8 +33,9 @@ const handleLoginUser = (values, dispatch) => {
 };
 
 const handleLoginUserSuccess = (result, dispatch) => {
+  const { isAdmin } = decode(result.token);
   localStorage.setItem('token', result.token);
-  dispatch(loginUserSuccess);
+  dispatch(loginUserSuccess(isAdmin));
 };
 
 const handleLoginUserFailure = (errors, dispatch, submitError) => {

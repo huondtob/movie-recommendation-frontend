@@ -3,8 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './Home';
 import LoginContainer from '../containers/LoginContainer';
 import RegisterContainer from '../containers/RegisterContainer';
-import SearchMoviesContainer from '../containers/SearchMoviesContainer';
-import RecommendationsContainer from '../containers/RecommendationsContainer';
+import SearchMovies from '../components/SearchMovies';
+import Recommendations from '../components/Recommendations';
 import AuthenticatedRouteContainer from '../containers/AuthenticatedRouteContainer';
 import PasswordResetContainer from '../containers/PasswordResetContainer';
 import SetPasswordContainer from '../containers/SetPasswordContainer';
@@ -20,8 +20,8 @@ export default function Main() {
         <Route path="/register" component={RegisterContainer} />
         <Route path="/reset-password" component={PasswordResetContainer} />
         <Route path="/set-password" component={SetPasswordContainer} />
-        <AuthenticatedRouteContainer path="/movies" component={SearchMoviesContainer} />
-        <AuthenticatedRouteContainer path="/recommendations" component={RecommendationsContainer} />
+        <AuthenticatedRouteContainer path="/movies" component={SearchMovies} />
+        <AuthenticatedRouteContainer path="/recommendations" component={Recommendations} />
         <AuthenticatedRouteContainer path="/users" component={Users} />
       </Switch>
     </main>
