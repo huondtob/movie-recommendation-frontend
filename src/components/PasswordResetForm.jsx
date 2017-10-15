@@ -1,3 +1,8 @@
+/**
+ * @summary   Passwort reset component
+ * @author    Kevin Gasser, Simon Müller, Tobias Huonder
+*/
+
 import React from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import { Redirect } from 'react-router-dom';

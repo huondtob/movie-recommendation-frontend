@@ -1,3 +1,8 @@
+/**
+ * @summary   Defines authenticated admin and public routes
+ * @author    Kevin Gasser, Simon Müller, Tobias Huonder
+*/
+
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from './Home';

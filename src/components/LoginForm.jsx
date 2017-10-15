@@ -1,3 +1,8 @@
+/**
+ * @summary   Login form component which is responsible for the user login
+ * @author    Kevin Gasser, Simon Müller, Tobias Huonder
+*/
+
 import React from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import { decode } from 'jsonwebtoken';

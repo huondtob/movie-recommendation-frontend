@@ -1,3 +1,8 @@
+/**
+ * @summary   Component which is responsble for handling the search requests for movies
+ * @author    Kevin Gasser, Simon Müller, Tobias Huonder
+*/
+
 import React from 'react';
 
 const BASE_URL = 'http://localhost:3001/api';

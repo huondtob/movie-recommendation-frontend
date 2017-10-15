@@ -1,3 +1,8 @@
+/**
+ * @summary   Users Component fetches and displeys all movies
+ * @author    Kevin Gasser, Simon Müller, Tobias Huonder
+*/
+
 import React from 'react';
 
 const BASE_URL = 'http://localhost:3001/api';

@@ -1,3 +1,8 @@
+/**
+ * @summary   Set password component which is responsible for setting the password
+ * @author    Kevin Gasser, Simon Müller, Tobias Huonder
+*/
+
 import React from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import queryString from 'query-string';

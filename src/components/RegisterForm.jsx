@@ -1,3 +1,8 @@
+/**
+ * @summary   Register form component which is responsible for the user registration
+ * @author    Kevin Gasser, Simon Müller, Tobias Huonder
+*/
+
 import React from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import { push } from 'react-router-redux';

@@ -1,3 +1,8 @@
+/**
+ * @summary   Reducer for user actions
+ * @author    Kevin Gasser, Simon Müller, Tobias Huonder
+*/
+
 import { LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE, LOGOUT_USER, LOGOUT_USER_SUCCESS,
   LOGOUT_USER_FAILURE,
 } from '../actions/user';

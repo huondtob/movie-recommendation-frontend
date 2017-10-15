@@ -1,3 +1,8 @@
+/**
+ * @summary   Header container for redux data connection
+ * @author    Kevin Gasser, Simon Müller, Tobias Huonder
+*/
+
 import { connect } from 'react-redux';
 import { logoutUser, logoutUserSuccess, logoutUserFailure } from '../actions/user';
 import Header from '../components/Header';

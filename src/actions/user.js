@@ -1,3 +1,8 @@
+/**
+ * @summary   Redux actions for user
+ * @author    Kevin Gasser, Simon Müller, Tobias Huonder
+*/
+
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
 export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE';

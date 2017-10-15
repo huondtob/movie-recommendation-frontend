@@ -1,3 +1,8 @@
+/**
+ * @summary   Footer component
+ * @author    Kevin Gasser, Simon Müller, Tobias Huonder
+*/
+
 import React from 'react';
 
 export default function Footer() {

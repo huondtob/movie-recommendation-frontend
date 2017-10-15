@@ -1,3 +1,8 @@
+/**
+ * @summary   Header component
+ * @author    Kevin Gasser, Simon Müller, Tobias Huonder
+*/
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 

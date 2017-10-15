@@ -1,3 +1,8 @@
+/**
+ * @summary   Password reset container for redux data connection
+ * @author    Kevin Gasser, Simon Müller, Tobias Huonder
+*/
+
 import { connect } from 'react-redux';
 import PasswordResetForm from '../components/PasswordResetForm';
 
