@@ -1,6 +1,6 @@
 /**
- * @summary   Admin route container for redux data connection
- * @author    Kevin Gasser, Simon Müller, Tobias Huonder
+  * @summary   Guard Route to group admin routes and check if user is authenticated
+  * @author    Kevin Gasser, Simon Müller, Tobias Huonder
 */
 
 import React from 'react';

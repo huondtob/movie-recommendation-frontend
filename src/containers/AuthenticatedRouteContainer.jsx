@@ -1,5 +1,5 @@
 /**
- * @summary   authentication route container for redux data connection
+ * @summary   Guard Route to group authenticated routes and check if user is authenticated
  * @author    Kevin Gasser, Simon Müller, Tobias Huonder
 */
 

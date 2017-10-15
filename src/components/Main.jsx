@@ -1,5 +1,5 @@
 /**
- * @summary   Defines authenticated admin and public routes
+ * @summary   Defines authenticated, admin and public routes
  * @author    Kevin Gasser, Simon Müller, Tobias Huonder
 */
 

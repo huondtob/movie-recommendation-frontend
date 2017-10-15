@@ -1,5 +1,5 @@
 /**
- * @summary   Search movies container for redux data connection
+ * @summary   Search movies container for redux state connection
  * @author    Kevin Gasser, Simon Müller, Tobias Huonder
 */
 

@@ -1,5 +1,5 @@
 /**
- * @summary   Users Component fetches and displeys all movies
+ * @summary   Users Component fetches and displays all users with the ability to delete them
  * @author    Kevin Gasser, Simon Müller, Tobias Huonder
 */
 

@@ -1,5 +1,5 @@
 /**
- * @summary   Register container for redux data connection
+ * @summary   Register container for redux state connection
  * @author    Kevin Gasser, Simon Müller, Tobias Huonder
 */
 

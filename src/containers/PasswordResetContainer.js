@@ -1,5 +1,5 @@
 /**
- * @summary   Password reset container for redux data connection
+ * @summary   Password reset container for redux state connection
  * @author    Kevin Gasser, Simon Müller, Tobias Huonder
 */
 
