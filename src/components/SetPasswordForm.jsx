@@ -5,6 +5,7 @@
 
 import React from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
+import { Button, Form, Message } from 'semantic-ui-react';
 import queryString from 'query-string';
 import { Redirect } from 'react-router-dom';
 import { push } from 'react-router-redux';
@@ -62,25 +63,33 @@ const SetPasswordForm = (props) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Username:
-        <Field name="username" component={FormField} type="text" />
-      </label>
-      <br />
-      <label>
-        Password:
-        <Field name="password" component={FormField} type="password" />
-      </label>
-      <br />
-      <label>
-        Password confirmation:
-        <Field name="passwordConfirmation" component={FormField} type="password" />
-      </label>
-      <br />
-      { error && <strong>{ error }</strong> }
-      <input type="submit" value="Submit" />
-    </form>
+    <Form onSubmit={handleSubmit}>
+      <Form.Field>
+        <label>
+          Username:
+          <Field name="username" component={FormField} type="text" />
+        </label>
+      </Form.Field>
+      <Form.Field>
+        <label>
+          Password:
+          <Field name="password" component={FormField} type="password" />
+        </label>
+      </Form.Field>
+      <Form.Field>
+        <label>
+          Password confirmation:
+          <Field name="passwordConfirmation" component={FormField} type="password" />
+        </label>
+      </Form.Field>
+      <Button type="submit">Submit</Button>
+
+      { error &&
+        <Message negative>
+          <Message.Header>{ error }</Message.Header>
+        </Message>
+      }
+    </Form>
   );
 };
 

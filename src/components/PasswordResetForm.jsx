@@ -6,6 +6,7 @@
 import React from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import { Redirect } from 'react-router-dom';
+import { Button, Form, Message } from 'semantic-ui-react';
 import FormField from './FormField';
 
 const BASE_URL = 'http://localhost:3001/api';
@@ -52,17 +53,27 @@ const PasswordResetForm = (props) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Email:
-        <Field name="email" component={FormField} type="email" />
-      </label>
-      <br />
-      { submitSucceeded && <strong>An Email has been sent</strong> }
-      { error && <strong>{ error }</strong> }
-      <input type="submit" value="Submit" />
+    <Form onSubmit={handleSubmit}>
+      <Form.Field>
+        <label>
+          Email:
+          <Field name="email" component={FormField} type="email" />
+        </label>
+      </Form.Field>
+      <Button type="submit">Submit</Button>
 
-    </form>
+      { submitSucceeded &&
+        <Message positive>
+          <Message.Header>An Email has been sent</Message.Header>
+        </Message>
+      }
+
+      { error &&
+        <Message negative>
+          <Message.Header>{ error }</Message.Header>
+        </Message>
+      }
+    </Form>
   );
 };
 

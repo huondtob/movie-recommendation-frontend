@@ -4,6 +4,7 @@
 */
 
 import React from 'react';
+import { Table, Message, Input, Button } from 'semantic-ui-react';
 
 const BASE_URL = 'http://localhost:3001/api';
 
@@ -75,7 +76,7 @@ export default class SearchMovies extends React.Component {
       })
       .then(() => {
         const movies = this.state.movies.filter(({ id }) => id !== movieId);
-        this.setState({ error: null, movies })
+        this.setState({ error: null, movies });
       })
       .catch(error => this.setState({ error }));
   }
@@ -83,31 +84,36 @@ export default class SearchMovies extends React.Component {
   render() {
     const movieRows = this.state.movies.map(movie =>
       (
-        <tr key={movie.id}>
-          <td>{movie.title}</td>
-          <td><button onClick={() => this.handleClickWatched(movie.id)}>Watched</button></td>
-        </tr>
+        <Table.Row key={movie.id}>
+          <Table.Cell>{movie.title}</Table.Cell>
+          <Table.Cell>
+            <Button onClick={() => this.handleClickWatched(movie.id)}>Watched</Button>
+          </Table.Cell>
+        </Table.Row>
       ));
 
     return (
       <div>
         <h1>Search movies</h1>
-        <input type="text" onChange={this.handleChange} />
-        <button onClick={this.handleClickSearch}>Search</button>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
+        <Input type="text" onChange={this.handleChange} />
+        <Button onClick={this.handleClickSearch}>Search</Button>
+        <Table celled>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell>Name</Table.HeaderCell>
+              <Table.HeaderCell>Action</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
             { movieRows }
-          </tbody>
-        </table>
+          </Table.Body>
+        </Table>
 
         { this.state.error &&
-          <strong>There was an error while fetching movies</strong> }
+          <Message negative>
+            <Message.Header>{ this.state.error }</Message.Header>
+          </Message>
+        }
       </div>
     );
   }

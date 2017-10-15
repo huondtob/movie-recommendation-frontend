@@ -4,6 +4,7 @@
 */
 
 import React from 'react';
+import { Table, Message } from 'semantic-ui-react';
 
 const BASE_URL = 'http://localhost:3001/api';
 
@@ -76,25 +77,32 @@ export default class Users extends React.Component {
   render() {
     const userRows = this.state.users.map(user =>
       (
-        <tr key={user.username}>
-          <td>{user.username}</td>
-          <td><button onClick={() => this.handleClickDelete(user.username)}>Delete</button></td>
-        </tr>
+        <Table.Row key={user.username}>
+          <Table.Cell>{user.username}</Table.Cell>
+          <Table.Cell>
+            <button onClick={() => this.handleClickDelete(user.username)}>Delete</button>
+          </Table.Cell>
+        </Table.Row>
       ));
 
     return (
       <div>
         <h1>Users</h1>
-        <table>
-          <tr>
-            <th>Username</th>
-            <th>Action</th>
-          </tr>
+        <Table celled>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell>Username</Table.HeaderCell>
+              <Table.HeaderCell>Action</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
           { userRows }
-        </table>
+        </Table>
 
         { this.state.error &&
-          <strong>There was an error fetching all users</strong> }
+          <Message negative>
+            <Message.Header>{ this.state.error }</Message.Header>
+          </Message>
+        }
       </div>
     );
   }

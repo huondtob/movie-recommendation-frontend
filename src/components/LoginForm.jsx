@@ -7,6 +7,7 @@ import React from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import { decode } from 'jsonwebtoken';
 import { Redirect, Link } from 'react-router-dom';
+import { Button, Form, Message } from 'semantic-ui-react';
 import { loginUser, loginUserSuccess, loginUserFailure } from '../actions/user';
 import FormField from './FormField';
 
@@ -68,21 +69,28 @@ const LoginForm = (props) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Username:
-        <Field name="username" component={FormField} type="text" />
-      </label>
-      <br />
-      <label>
-        Password:
-        <Field name="password" component={FormField} type="password" />
-      </label>
-      <br />
-      { error && <strong>{ error }</strong> }
-      <input type="submit" value="Submit" />
-      <Link to="/reset-password">Reset password</Link>
-    </form>
+    <Form onSubmit={handleSubmit}>
+      <Form.Field>
+        <label>
+          Username:
+          <Field name="username" component={FormField} type="text" />
+        </label>
+      </Form.Field>
+      <Form.Field>
+        <label>
+          Password:
+          <Field name="password" component={FormField} type="password" />
+        </label>
+      </Form.Field>
+
+      { error &&
+        <Message negative>
+          <Message.Header>{ error }</Message.Header>
+        </Message>
+      }
+      <Button type="submit">Submit</Button>
+      <Button as={Link} to="/reset-password" type="submit">Reset password</Button>
+    </Form>
   );
 };
 

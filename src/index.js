@@ -13,7 +13,6 @@ import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 import thunkMiddleware from 'redux-thunk';
 import loggerMiddleware from 'redux-logger';
 import reducers from './reducers';
-import './index.css';
 import App from './components/App';
 import { loginUserSuccess } from './actions/user';
 

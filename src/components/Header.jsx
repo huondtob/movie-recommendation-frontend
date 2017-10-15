@@ -5,22 +5,93 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Menu } from 'semantic-ui-react'
 
-export default function Header(props) {
-  const { authenticated, isAdmin, handleLogout } = props;
+export default class Header extends React.Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <header>
-      <nav>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/register">Register</Link></li>
-          { !authenticated && <li><Link to="/login">Login</Link></li> }
-          { authenticated && <li><Link to="/movies">Search movies</Link></li> }
-          { authenticated && isAdmin && <li><Link to="/users">Users</Link></li> }
-          { authenticated && <li><button onClick={handleLogout}>Logout</button></li> }
-        </ul>
-      </nav>
-    </header>
-  );
+    this.state = { activeItem: 'home' };
+    this.handleItemClick = this.handleItemClick.bind(this);
+  }
+
+  handleItemClick(e, { name }) {
+    this.setState({ activeItem: name });
+  }
+
+  render() {
+    const { authenticated, isAdmin, handleLogout } = this.props;
+    const { activeItem } = this.state;
+
+    return (
+      <header>
+        <nav>
+          <Menu pointing secondary>
+            <Menu.Item
+              as={Link}
+              to="/"
+              name="home"
+              active={activeItem === 'home'}
+              onClick={this.handleItemClick}
+            >
+              Home
+            </Menu.Item>
+            <Menu.Item
+              as={Link}
+              to="/register"
+              name="register"
+              active={activeItem === 'register'}
+              onClick={this.handleItemClick}
+            >
+              Register
+            </Menu.Item>
+            { authenticated &&
+              <Menu.Item
+                as={Link}
+                to="/movies"
+                name="movies"
+                active={activeItem === 'movies'}
+                onClick={this.handleItemClick}
+              >
+                Search movies
+              </Menu.Item>
+            }
+            { authenticated && isAdmin &&
+              <Menu.Item
+                as={Link}
+                to="/users"
+                name="users"
+                active={activeItem === 'users'}
+                onClick={this.handleItemClick}
+              >
+                Users
+              </Menu.Item>
+            }
+            <Menu.Menu position="right">
+              { !authenticated &&
+                <Menu.Item
+                  as={Link}
+                  to="/login"
+                  name="login"
+                  active={activeItem === 'login'}
+                  onClick={this.handleItemClick}
+                >
+                  Login
+                </Menu.Item>
+              }
+              { authenticated &&
+                <Menu.Item
+                  name="logout"
+                  active={activeItem === 'logout'}
+                  onClick={handleLogout}
+                >
+                  Logout
+                </Menu.Item>
+              }
+            </Menu.Menu>
+          </Menu>
+        </nav>
+      </header>
+    );
+  }
 }
