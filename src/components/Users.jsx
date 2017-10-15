@@ -6,7 +6,7 @@
 import React from 'react';
 import { Table, Message } from 'semantic-ui-react';
 
-const BASE_URL = 'https://peaceful-dawn-58845.herokuapp.com/api';
+const BASE_URL = 'https://movie-recommendation-backend.herokuapp.com/api';
 
 export default class Users extends React.Component {
   constructor(props) {

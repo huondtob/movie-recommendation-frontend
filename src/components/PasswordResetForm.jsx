@@ -9,7 +9,7 @@ import { Redirect } from 'react-router-dom';
 import { Button, Form, Message } from 'semantic-ui-react';
 import FormField from './FormField';
 
-const BASE_URL = 'https://peaceful-dawn-58845.herokuapp.com/api';
+const BASE_URL = 'https://movie-recommendation-backend.herokuapp.com/api';
 
 /** Function for handling the password reset */
 const handlePasswordReset = (values) => {
@@ -54,13 +54,13 @@ const PasswordResetForm = (props) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Form.Field>
+      <Form.Field required>
         <label>
           Email:
-          <Field name="email" component={FormField} type="email" />
         </label>
+        <Field name="email" component={FormField} type="email" />
       </Form.Field>
-      <Button type="submit">Submit</Button>
+      <Button type="submit" primary>Submit</Button>
 
       { submitSucceeded &&
         <Message positive>

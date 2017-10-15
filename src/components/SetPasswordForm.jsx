@@ -11,7 +11,7 @@ import { Redirect } from 'react-router-dom';
 import { push } from 'react-router-redux';
 import FormField from './FormField';
 
-const BASE_URL = 'https://peaceful-dawn-58845.herokuapp.com/api';
+const BASE_URL = 'https://movie-recommendation-backend.herokuapp.com/api';
 
 const handleSetPassword = (values, dispatch, { location }) => {
   const headers = new Headers({
@@ -73,16 +73,16 @@ const SetPasswordForm = (props) => {
       <Form.Field>
         <label>
           Password:
-          <Field name="password" component={FormField} type="password" />
+          <Field name="password" component={FormField} type="password" required />
         </label>
       </Form.Field>
       <Form.Field>
         <label>
           Password confirmation:
-          <Field name="passwordConfirmation" component={FormField} type="password" />
+          <Field name="passwordConfirmation" component={FormField} type="password" required />
         </label>
       </Form.Field>
-      <Button type="submit">Submit</Button>
+      <Button type="submit" primary>Submit</Button>
 
       { error &&
         <Message negative>

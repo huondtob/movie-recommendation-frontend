@@ -6,7 +6,7 @@
 import React from 'react';
 import { Table, Message, Input, Button } from 'semantic-ui-react';
 
-const BASE_URL = 'https://peaceful-dawn-58845.herokuapp.com/api';
+const BASE_URL = 'https://movie-recommendation-backend.herokuapp.com/api';
 
 export default class SearchMovies extends React.Component {
   constructor(props) {
@@ -96,7 +96,7 @@ export default class SearchMovies extends React.Component {
       <div>
         <h1>Search movies</h1>
         <Input type="text" onChange={this.handleChange} />
-        <Button onClick={this.handleClickSearch}>Search</Button>
+        <Button onClick={this.handleClickSearch} primary>Search</Button>
         <Table celled>
           <Table.Header>
             <Table.Row>

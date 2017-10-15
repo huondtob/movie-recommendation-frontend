@@ -11,7 +11,7 @@ import { Button, Form, Message } from 'semantic-ui-react';
 import { loginUser, loginUserSuccess, loginUserFailure } from '../actions/user';
 import FormField from './FormField';
 
-const BASE_URL = 'https://peaceful-dawn-58845.herokuapp.com/api';
+const BASE_URL = 'https://movie-recommendation-backend.herokuapp.com/api';
 
 /** Function for handling the user login */
 const handleLoginUser = (values, dispatch) => {
@@ -70,17 +70,17 @@ const LoginForm = (props) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Form.Field>
+      <Form.Field required>
         <label>
           Username:
-          <Field name="username" component={FormField} type="text" />
         </label>
+        <Field name="username" component={FormField} type="text" />
       </Form.Field>
-      <Form.Field>
+      <Form.Field required>
         <label>
           Password:
-          <Field name="password" component={FormField} type="password" />
         </label>
+        <Field name="password" component={FormField} type="password" />
       </Form.Field>
 
       { error &&
@@ -88,8 +88,8 @@ const LoginForm = (props) => {
           <Message.Header>{ error }</Message.Header>
         </Message>
       }
-      <Button type="submit">Submit</Button>
-      <Button as={Link} to="/reset-password" type="submit">Reset password</Button>
+      <Button type="submit" primary>Submit</Button>
+      <Button as={Link} to="/reset-password" type="submit" secondary>Reset password</Button>
     </Form>
   );
 };
