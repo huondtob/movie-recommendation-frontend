@@ -9,7 +9,7 @@ import { Redirect } from 'react-router-dom';
 import { Button, Form, Message } from 'semantic-ui-react';
 import FormField from './FormField';
 
-const BASE_URL = 'http://localhost:3001/api';
+const BASE_URL = 'https://peaceful-dawn-58845.herokuapp.com/api';
 
 /** Function for handling the password reset */
 const handlePasswordReset = (values) => {
