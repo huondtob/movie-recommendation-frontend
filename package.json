@@ -1,8 +1,16 @@
 {
   "name": "movie-recomendation-frontend",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
-  "main": "./src/index.jsx",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huondtob/movie-recommendation-frontend.git"
+  },
+  "author": "Kevin Gasser, Tobias Huonder, Simon Mueller",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huondtob/movie-recommendation-frontend/issues"
+  },
   "dependencies": {
     "history": "^4.7.2",
     "jsonwebtoken": "^8.1.0",
