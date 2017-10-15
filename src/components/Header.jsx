@@ -6,7 +6,6 @@ export default function Header(props) {
 
   return (
     <header>
-      <h1>Logo</h1>
       <nav>
         <ul>
           <li><Link to="/">Home</Link></li>
