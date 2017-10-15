@@ -8,7 +8,7 @@ import { Field, reduxForm, SubmissionError } from 'redux-form';
 import { push } from 'react-router-redux';
 import FormField from './FormField';
 
-const BASE_URL = 'http://localhost:3001/api';
+const BASE_URL = 'https://peaceful-dawn-58845.herokuapp.com/api';
 
 /** Function for handling user registration */
 const handleRegisterUser = (values) => {

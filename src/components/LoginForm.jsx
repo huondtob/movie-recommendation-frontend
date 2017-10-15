@@ -10,7 +10,7 @@ import { Redirect, Link } from 'react-router-dom';
 import { loginUser, loginUserSuccess, loginUserFailure } from '../actions/user';
 import FormField from './FormField';
 
-const BASE_URL = 'http://localhost:3001/api';
+const BASE_URL = 'https://peaceful-dawn-58845.herokuapp.com/api';
 
 /** Function for handling the user login */
 const handleLoginUser = (values, dispatch) => {

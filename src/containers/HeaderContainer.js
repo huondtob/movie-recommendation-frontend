@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { logoutUser, logoutUserSuccess, logoutUserFailure } from '../actions/user';
 import Header from '../components/Header';
 
-const BASE_URL = 'http://localhost:3001/api';
+const BASE_URL = 'https://peaceful-dawn-58845.herokuapp.com/api';
 
 const mapStateToProps = state => ({
   authenticated: state.user.authenticated,

@@ -5,7 +5,7 @@
 
 import React from 'react';
 
-const BASE_URL = 'http://localhost:3001/api';
+const BASE_URL = 'https://peaceful-dawn-58845.herokuapp.com/api';
 
 export default class SearchMovies extends React.Component {
   constructor(props) {
