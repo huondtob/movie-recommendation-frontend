@@ -1,3 +1,8 @@
+/**
+ * @summary   Start point to build the render the react app
+ * @author    Kevin Gasser, Simon Müller, Tobias Huonder
+*/
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
