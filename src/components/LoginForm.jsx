@@ -12,6 +12,7 @@ import FormField from './FormField';
 
 const BASE_URL = 'http://localhost:3001/api';
 
+/** Function for handling the user login */
 const handleLoginUser = (values, dispatch) => {
   dispatch(loginUser);
 
@@ -45,12 +46,14 @@ const handleLoginUser = (values, dispatch) => {
     });
 };
 
+/** Function for handling successfull user login */
 const handleLoginUserSuccess = (result, dispatch) => {
   const { isAdmin, sub } = decode(result.token);
   localStorage.setItem('token', result.token);
   dispatch(loginUserSuccess(isAdmin, sub));
 };
 
+/** Function for handling unsuccessfull user login */
 const handleLoginUserFailure = (errors, dispatch, submitError) => {
   dispatch(loginUserFailure(submitError));
 };

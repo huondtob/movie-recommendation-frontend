@@ -10,6 +10,7 @@ import FormField from './FormField';
 
 const BASE_URL = 'http://localhost:3001/api';
 
+/** Function for handling user registration */
 const handleRegisterUser = (values) => {
   const headers = new Headers({
     'Content-Type': 'application/json',
@@ -41,6 +42,7 @@ const handleRegisterUser = (values) => {
     });
 };
 
+/** Function for handling successfull registration */
 const handleRegisterUserSuccess = (result, dispatch) => {
   dispatch(push('/login'));
 };

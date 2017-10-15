@@ -46,10 +46,12 @@ const handleSetPassword = (values, dispatch, { location }) => {
     });
 };
 
+/** Function for handling successfull setting password */
 const handleSetPasswordSuccess = (result, dispatch) => {
   dispatch(push('/login'));
 };
 
+/** Function for setting the password form */
 const SetPasswordForm = (props) => {
   const { handleSubmit, error, authenticated } = props;
 

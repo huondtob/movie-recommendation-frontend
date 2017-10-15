@@ -10,6 +10,7 @@ import FormField from './FormField';
 
 const BASE_URL = 'http://localhost:3001/api';
 
+/** Function for handling the password reset */
 const handlePasswordReset = (values) => {
   const headers = new Headers({
     'Content-Type': 'application/json',
