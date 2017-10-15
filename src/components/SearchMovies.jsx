@@ -68,7 +68,10 @@ export default class SearchMovies extends React.Component {
             throw new Error(errBody.error);
           });
       })
-      .then(() => this.setState({ error: null }))
+      .then(() => {
+        const movies = this.state.movies.filter(({ id }) => id !== movieId);
+        this.setState({ error: null, movies })
+      })
       .catch(error => this.setState({ error }));
   }
 
