@@ -17,3 +17,6 @@ We make use of eslint to ensure a consistent code style throughout the project.
 We write the code in an ES2015+ style  and we prefer the use
 of classes and the ```import``` statement.
 We follow the Airbnb javascript style guidelines: https://github.com/airbnb/javascript.
+
+## Docstyle
+We use JSDoc (http://usejsdoc.org) to document code. Preferably no inline comments should be necessary. Docstrings should only be added if they add information and not just to include them.
