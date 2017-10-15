@@ -1,13 +1,14 @@
 # Movie Recomendation Frontend
 
 ## Getting Started
-To get the project running first it is required to have the node package manager
+To get the project running first it is required to have the yarn dependency manager.
+(https://github.com/yarnpkg/yarn)
 
 ### Install Dependencies
-`npm install`
+`yarn install`
 
 ### Start
-`npm start`
+`yarn start`
 
 The Frontend is now avaliable on http://localhost:3000/
 
