@@ -36,15 +36,17 @@ export default class Header extends React.Component {
             >
               Home
             </Menu.Item>
-            <Menu.Item
-              as={Link}
-              to="/register"
-              name="register"
-              active={activeItem === 'register'}
-              onClick={this.handleItemClick}
-            >
-              Register
-            </Menu.Item>
+            { !authenticated &&
+              <Menu.Item
+                as={Link}
+                to="/register"
+                name="register"
+                active={activeItem === 'register'}
+                onClick={this.handleItemClick}
+              >
+                Register
+              </Menu.Item>
+            }
             { authenticated &&
               <Menu.Item
                 as={Link}
